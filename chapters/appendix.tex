@@ -1,0 +1,35 @@
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\pagestyle{appendix}
+\appendix
+\addcontentsline{toc}{section}{Appendix}
+\renewcommand{\thesection}{\Alph{section}} %appendix is indexed ABC not 123
+\renewcommand{\thesubsection}{\Alph{subsection}} %appendix is indexed ABC not 123
+%Tables and figures are changed to alph
+\renewcommand{\thefigure}{\Alph{section}.\arabic{figure}}
+\renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+
+
+\section{Additional Note 1}
+\lipsum[2]
+
+\begin{figure}[H] %example of forcing a figure to be in a specific place
+    \centering
+    \caption{Example of an image in the appendix}
+    \includegraphics[width=\textwidth]{example-image-b}
+    \label{fig:appendix_a}
+\end{figure}
+
+\newpage
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\section{More to Say}
+
+\lipsum[3]
+
+\begin{figure}[H]
+    \centering
+    \caption{Example of an image in the appendix}
+    \includegraphics[width=\textwidth]{example-image-c}
+    \label{fig:appendix_b}
+\end{figure}

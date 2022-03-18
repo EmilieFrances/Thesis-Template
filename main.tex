@@ -1,0 +1,204 @@
+%%%%%%%%%%%%%%%
+% Just a good old clean thesis template
+%% Title Page(s)
+%% Acknowledgements
+%% Abstract
+%% Table of Contents
+%%%% Table of Contents itself
+%%%% List of Figures
+%%%% List of Tables
+%%%% Abbreviations
+%%%% Glossary
+%% Introduction
+%% Literature Review
+%% Hypothesis
+%% Methodology
+%% Results
+%% Discussion
+%% Conclusion
+%% Appendix
+%% Bibliography
+%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt,twoside]{article} %I use article but could be adjusted to book
+%\documentclass[a4paper,12pt]{article}
+\usepackage{lipsum} %for lipsum
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{wrapfig}    % inline figures
+\usepackage{enumitem}
+\usepackage{mwe}
+\usepackage{graphicx} % Use for Images
+\usepackage{here}     % Forced Figure Placement
+\usepackage{pslatex}	% Use PostScript Fonts
+\usepackage{fancyhdr} % Use headers
+\usepackage{float} %floats
+\usepackage{textcomp}
+\usepackage{csquotes} %quotes
+\usepackage{tabularx} %for big tables
+\usepackage[acronym]{glossaries} %to add glossary and acronyms to document
+\usepackage[style=apa]{biblatex} %bibliography bib
+\addbibresource{biblio.bib}
+%i use todonotes to make notes to myself
+\usepackage{todonotes}
+\newcommand{\notetoself}[1]{\todo[inline, color=blue!20]{#1}}
+\usepackage{hyperref} %hyperlink the entire document
+% include bibliography in table of contents
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[nottoc]{tocbibind}
+
+
+\DeclareCaptionLabelSeparator*{spaced}{\\[1ex]}
+\captionsetup{textfont=it,format=plain,justification=justified,
+  singlelinecheck=false,labelsep=spaced,skip=0pt}
+
+% MARGINS adjust if needed for book layout
+\usepackage[
+	top    = 1.5cm,
+	bottom = 1.80cm,
+	left   = 2.00cm,
+	right  = 2.00cm,
+	includeheadfoot]{geometry}
+\setlength{\parindent}{0pt}
+
+% TITLE PAGE
+\fancypagestyle{titlepage}{
+	\fancyhf{}
+	\fancyhead[C]{\includegraphics[width=0.5\textwidth]{images/banner.jpg}} %replace with banner you want
+	\renewcommand{\headrulewidth}{0pt}
+}
+% BODY
+\fancypagestyle{body}{
+    \fancyhf{}
+    \fancyhead[LE,RO]{\thepage}
+    \fancyhead[RE,LO]{Chapter \leftmark}
+}
+% for bibliography
+\fancypagestyle{contents}{
+    \fancyhf{}
+    \fancyhead[LE,RO]{\thepage}
+    \fancyhead[RE,LO]{\leftmark}
+}
+
+\fancypagestyle{appendix}{
+    \fancyhf{}
+    \fancyhead[LE,RO]{\thepage}
+    \fancyhead[RE,LO]{APPENDICES}
+}
+
+\fancypagestyle{acknowledgements}{
+    \fancyhf{}
+    \fancyhead[LE,RO]{\thepage}
+}
+
+%paragraph styling
+\setlength{\parskip}{0.1em}
+\setlength{\parindent}{3em}
+% \renewcommand{\baselinestretch}{1.3} % 1.5 spaced
+% \renewcommand{\baselinestretch}{1.6} % double spaced
+
+\renewcommand{\headrulewidth}{1.5pt}
+\renewcommand{\arraystretch}{1.2}
+
+%Tables and figures are numbered according to the section they are in
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+
+%GLOSSARY & ABBREVIATIONS
+\makeglossaries 
+\include{chapters/abbreviations}
+\include{chapters/glossary}
+
+\renewcommand*\contentsname{Table of Contents}
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+
+% Begin the actual document
+\begin{document}
+\pagenumbering{roman} %roman numerals to start
+\pagestyle{body}
+
+%\include{0.TODOs} %list of all todos in the document
+%\setlength{\headheight}{50pt}
+
+\title{
+    \vspace{5cm}
+        {\bf
+        {\Huge Title of the Paper goes here\\}
+        }
+}
+\date{}
+\author{Author Name}
+
+\maketitle
+\thispagestyle{titlepage}
+
+
+\newpage
+
+\thispagestyle{titlepage}
+
+\vspace*{4cm}
+
+\begin{center}
+    \vspace{1cm}{\bf{\Large Title\\}{Subtitle}}\\
+    \vspace{1cm}{\bf{\large Location}}\\
+    \vspace{1cm}{\bf Thesis/Dissertation}\\
+    \vspace{0.5cm}Degree Name\\
+    \vspace{1cm}{\bf Supervised by}\\
+    \vspace{0.5cm}prof. dr. ir. X. Ample\\
+    Professor of Example Studies\\
+    \vspace{1cm}{\bf Written by}\\
+    \vspace{0.5cm} Author\\
+    \vspace{4cm}\today
+    
+\end{center}
+
+\newpage
+
+\setlength{\headheight}{32pt}
+
+\include{chapters/0.acknowledgements}
+
+\include{chapters/0.abstract}
+
+\include{chapters/0.contents}
+
+\include{chapters/0.listfigure}
+
+\include{chapters/0.listtable}
+
+\include{chapters/0.acronyms} %comment out if you don't want it
+
+\include{chapters/0.glossary} %comment out if you donæt want it
+
+\pagestyle{body}
+\pagenumbering{arabic} %switch to arabic numbers
+
+\include{chapters/1.0.introduction}
+
+\include{chapters/1.1.background}
+
+\include{chapters/1.2.researchquestion}
+
+\include{chapters/2.0.methods}
+
+\include{chapters/3.results}
+
+\include{chapters/4.discussion}
+
+\include{chapters/5.conclusion}
+
+\include{chapters/appendix}
+
+\pagestyle{contents}
+
+\nocite{*} %prints the entire bibliography rather than only cited
+
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography[title={Bibliography}]
+
+
+
+\end{document}
